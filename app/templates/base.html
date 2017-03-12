@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{% block title %} {% endblock %}</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <div id="navbar">
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('profiles') }}">Profiles</a></li>
+          </ul>
+        </div>
+        
+        <br/><br/>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <br/><br/>
+        
+        {% block main %} {% endblock %}
+    </body>
+</html>

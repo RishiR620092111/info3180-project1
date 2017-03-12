@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} SignUp {% endblock %}
+
+{% block main %}
+<form action="{{ url_for('profile') }}" method="POST" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    
+    <label for="image">Image </label><br/>
+    <input type="file" name="image"/>
+    <br /><br/>
+    
+    {{ form.first_name.label }} <br/> {{ form.first_name }} <br />
+    {{ form.last_name.label }} <br/> {{ form.last_name }} <br />
+    {{ form.age.label }} <br/> {{ form.age }} <br />
+    {{ form.gender.label }} <br/> {{ form.gender }} <br />
+    {{ form.biography.label }} <br/> {{ form.biography }} <br />
+    
+    <button type="submit" name="submit">SignUp</button>
+</form>
+{% endblock %}
